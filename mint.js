@@ -1,10 +1,9 @@
 import { initializeContract } from "./wallet.js";
 
-let mintedAmount = await getCurrentSupply();
+// let mintedAmount = await getCurrentSupply();
 const maxMintAmount = await getTotalSupply();
 
 const mintContractStatusContainer = document.getElementById('contract-status');
-console.log(mintContractStatusContainer)
 if (await getMintStatus() === false) {
     mintContractStatusContainer.innerHTML = `
     <div class="mint-contract-status" id="contract-status">Mint Status: &nbsp;
@@ -23,7 +22,7 @@ if (await getMintStatus() === false) {
 
 const mintAmountElement = document.getElementById('mint-mount');
 mintAmountElement.innerHTML = `
-    Total minted: ${mintedAmount} / ${maxMintAmount}
+    Total minted: ${await getCurrentSupply()} / ${maxMintAmount}
 `
 
 const mintButton = document.getElementById('mint-button');
@@ -42,23 +41,35 @@ mintButton.addEventListener('click', async () => {
         return;
     }
 
-    const mint = mintNft(Number(inputAmount.value));
+    try {
+        // Mint the NFT and wait for the transaction to be confirmed
+        const tx = await mintNft(Number(inputAmount.value));
 
-    mintSection.innerHTML = `
-        <h2>Thank you!</h2>
-        <p>☕ You succesfully minted ${inputAmount.value} ${checkIfOneNft()} ☕</p>
-        <div class="mint-another-container">
-            <a class="mint-another" href="mint.html">Mint Another One</a>
-        </div>
-        <p>Total minted: ${mintedAmount} / ${maxMintAmount}</p>
-    `
+        if (tx.status) {
+            // Update the UI only if the transaction was successful
+            mintSection.innerHTML = `
+                <h2>🎉 Congratulations 🎉</h2>
+                <p>You successfully minted ${inputAmount.value} ${checkIfOneNft(Number(inputAmount.value))}.</p>
+                ${await checkMintAmountLeft()}
+                <div class="mint-another-container">
+                    <a class="mint-another" href="mint.html">Mint Another One</a>
+                </div>
+                <p>Total minted: ${await getCurrentSupply()} / ${maxMintAmount}</p>
+            `;
+        } else {
+            alert('Transaction failed. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error minting NFT:', error);
+        alert('An error occurred while minting. Please try again.');
+    }
 
     inputAmount.value = '';
 })
 
 
-function checkIfOneNft() {
-    if (Number(inputAmount.value) === 1) {
+function checkIfOneNft(number) {
+    if (number === 1) {
         return "NFT";
     } else {
         return "NFTs";
@@ -152,5 +163,21 @@ async function mintNft(mintAmount) {
         return tx;
     } catch (error) {
         console.error('Error minting:', error);
+        throw error; // Re-throw the error to handle it in the calling function
+    }
+}
+
+async function checkMintAmountLeft() {
+    const amountMinted = await getMintAmount();
+    const maxMintAmount = await getMaxMintAmount();
+    const mintAmountRemaining = Number(maxMintAmount) - Number(amountMinted);
+    if (mintAmountRemaining === 0) {
+        return '';
+    } else {
+        return `
+            <p>
+                There is still ${mintAmountRemaining} ${checkIfOneNft(mintAmountRemaining)} with your name left!
+            </p>
+        `
     }
 }

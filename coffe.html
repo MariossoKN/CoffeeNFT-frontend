@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coffe NFT</title>
+    <meta name="description" content="A brief description of your page">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add any additional meta tags, fonts, or stylesheets here -->
+    <!-- Add Pacifico Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" defer></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script> -->
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Hamburger Menu and Connect Wallet Button (Left) -->
+            <div class="left-section">
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="coffe.html">Home</a>
+                        <a href="mint.html">Mint</a>
+                        <a href="about.html">About</a>
+                    </div>
+                </div>
+                <button class="connect-wallet" id="connectWallet">Connect Wallet</button>
+                <!-- Connect Wallet Button -->
+            </div>
+
+            <!-- Centered Title -->
+            <div class="title">
+                <a href="coffe.html" class="title-link">
+                    <h1>Coffee NFT</h1>
+                </a>
+            </div>
+
+            <!-- Links (Right) -->
+            <div class="nav-links">
+                <a href="mint.html">Mint</a>
+                <a href="https://x.com" target="_blank">Twitter</a> <!-- Updated Twitter link -->
+                <a href="about.html">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="welcome-section">
+            <h2>Welcome to Coffee NFT</h2>
+            <p>Discover the world of Coffee NFTs, where every sip of coffee is a unique digital experience. Our NFTs are
+                crafted with love, passion, and a touch of caffeine, bringing the art of coffee to the blockchain.</p>
+            <p>Whether you're a coffee enthusiast or a digital art collector, our Coffee NFTs are the perfect blend of
+                creativity and flavor. Start your collection today and own a piece of coffee history!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Coffee NFT. All rights reserved.</p>
+    </footer>
+
+    <script src="hamburger.js" defer></script>
+    <!-- <script src="wallet.js" type="module"></script> -->
+    <script src="wallet.js" type="module" defer></script>
+    <script src="contract.js" type="module" defer></script>
+</body>
+
+</html>

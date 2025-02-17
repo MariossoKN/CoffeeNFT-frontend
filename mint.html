@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mint - Coffee NFT</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Hamburger Menu and Connect Wallet Button (Left) -->
+            <div class="left-section">
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="coffe.html">Home</a>
+                        <a href="mint.html">Mint</a>
+                        <a href="about.html">About</a>
+                    </div>
+                </div>
+                <button class="connect-wallet" id="connectWallet">Connect Wallet</button>
+                <!-- Connect Wallet Button -->
+            </div>
+
+            <!-- Centered Title -->
+            <div class="title">
+                <a href="coffe.html" class="title-link">
+                    <h1>Coffee NFT</h1>
+                </a>
+            </div>
+
+            <!-- Links (Right) -->
+            <div class="nav-links">
+                <a href="mint.html" class="active">Mint</a> <!-- Updated link to mint.html -->
+                <a href="https://x.com" target="_blank">Twitter</a> <!-- Updated Twitter link -->
+                <a href="about.html">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="mint-contract-status-container" id="contract-status">
+            <div class="mint-contract-status">Mint Status: &nbsp;
+                <span class="led-closed">&#10625; </span>
+                <span class="status-closed">Closed</span>
+            </div>
+        </div>
+        <section class="mint-section" id="mint-section-id">
+            <h2>Mint Your Coffee NFT</h2>
+            <p>Welcome to the minting page! Here you can create your very own Coffee NFTs ☕</p>
+            <div class="mint-controls">
+                <input type="number" id="nft-quantity" placeholder="Amount..." min="1" max="10">
+                <button id="mint-button">Mint Now</button>
+            </div>
+            <p id="mint-mount"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Coffee NFT. All rights reserved.</p>
+    </footer>
+
+    <script src="wallet.js" type="module" defer></script>
+    <script src="contract.js" type="module" defer></script>
+    <script src="mint.js" type="module"></script>
+</body>
+
+</html>

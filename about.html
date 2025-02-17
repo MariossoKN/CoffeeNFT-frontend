@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mint - Coffee NFT</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Hamburger Menu and Connect Wallet Button (Left) -->
+            <div class="left-section">
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="coffe.html">Home</a>
+                        <a href="mint.html">Mint</a>
+                        <a href="about.html">About</a>
+                    </div>
+                </div>
+                <button class="connect-wallet" id="connectWallet">Connect Wallet</button>
+                <!-- Connect Wallet Button -->
+            </div>
+
+            <!-- Centered Title -->
+            <div class="title">
+                <a href="coffe.html" class="title-link">
+                    <h1>Coffee NFT</h1>
+                </a>
+            </div>
+
+            <!-- Links (Right) -->
+            <div class="nav-links">
+                <a href="mint.html">Mint</a>
+                <a href="https://x.com" target="_blank">Twitter</a> <!-- Updated Twitter link -->
+                <a href="about.html" class="active">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <h2>About Coffee NFT</h2>
+            <p>At <strong>Coffee NFT</strong>, we blend the rich, aromatic world of coffee with the innovative realm of
+                blockchain technology. Our mission is to create a unique digital experience that celebrates the art,
+                culture, and passion behind every cup of coffee.</p>
+
+            <h3>What Are Coffee NFTs?</h3>
+            <p>Coffee NFTs are digital collectibles that represent the essence of coffee in the form of art. Each NFT is
+                a one-of-a-kind piece, inspired by the flavors, origins, and stories of coffee from around the world.
+                Whether it's a bold espresso, a smooth latte, or a rare single-origin brew, our NFTs capture the soul of
+                coffee in every pixel.</p>
+
+            <h3>Why Coffee NFTs?</h3>
+            <ul>
+                <li><strong>Unique Artistry</strong>: Every Coffee NFT is a masterpiece, created by talented artists who
+                    share our love for coffee.</li>
+                <li><strong>Community</strong>: Join a global community of coffee lovers and digital art enthusiasts.
+                </li>
+                <li><strong>Sustainability</strong>: A portion of our proceeds supports sustainable coffee farming
+                    practices, ensuring a brighter future for coffee growers.</li>
+            </ul>
+
+            <h3>Our Vision</h3>
+            <p>We believe that coffee is more than just a drink—it's a way of life. With Coffee NFTs, we aim to bring
+                people together, celebrate diversity, and create a lasting legacy in the world of digital art.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Coffee NFT. All rights reserved.</p>
+    </footer>
+
+    <script src="wallet.js" type="module" defer></script>
+    <script src="contract.js" type="module" defer></script>
+</body>
+
+</html>

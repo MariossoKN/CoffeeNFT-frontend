@@ -1,0 +1,506 @@
+/* General Styles */
+html,
+body {
+    height: 100%;
+    /* Make the HTML and body take up the full height of the viewport */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    /* Stack header, main, and footer vertically */
+    background-color: #6F4E37;
+    /* Coffee brown for the main page */
+    color: #fff;
+    /* White text for contrast */
+}
+
+/* Header Styles */
+header {
+    flex-shrink: 0;
+    /* Prevent the header from shrinking */
+}
+
+/* Main Content Styles */
+main {
+    flex-grow: 1;
+    /* Allow the main content to grow and fill the available space */
+    padding: 20px;
+    /* Add some padding */
+}
+
+/* Footer Styles */
+footer {
+    flex-shrink: 0;
+    /* Prevent the footer from shrinking */
+    text-align: center;
+    /* Center-align the footer text */
+    padding: 20px;
+    /* Add some padding */
+    background-color: #4B3621;
+    /* Darker coffee brown for the footer */
+    border-top: 1px solid #3E2D1E;
+    /* Optional: Add a border */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* Space out the left and right sections */
+    align-items: center;
+    /* Vertically center all items */
+    padding: 10px 20px;
+    background-color: #4B3621;
+    /* Darker coffee brown for the navbar */
+    border-bottom: 1px solid #3E2D1E;
+    /* Optional: Add a darker border */
+    position: relative;
+    /* Needed for absolute positioning of the title */
+}
+
+/* Left Section (Hamburger + Connect Wallet Button) */
+.left-section {
+    display: flex;
+    align-items: center;
+    /* Vertically center items */
+    gap: 10px;
+    /* Space between hamburger and button */
+}
+
+/* Hamburger Menu */
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    /* Ensure the icon is visible */
+    flex: 0 0 auto;
+    /* Prevent the hamburger from growing or shrinking */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    /* Hide the dropdown by default */
+    position: absolute;
+    top: 100%;
+    /* Position below the hamburger icon */
+    left: 0;
+    background-color: #4B3621;
+    /* Darker coffee brown for the dropdown */
+    border: 1px solid #3E2D1E;
+    /* Add a border */
+    border-radius: 5px;
+    /* Rounded corners */
+    z-index: 1000;
+    /* Ensure the dropdown appears above other content */
+    min-width: 150px;
+    /* Set a minimum width */
+}
+
+.dropdown-menu a {
+    display: block;
+    /* Make links stack vertically */
+    padding: 10px 20px;
+    /* Add padding */
+    color: #fff;
+    /* White text color */
+    text-decoration: none;
+    /* Remove underline */
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover effects */
+}
+
+.dropdown-menu a:hover {
+    background-color: #6F4E37;
+    /* Change background color on hover */
+}
+
+/* Show the dropdown menu when the "show" class is added */
+.dropdown-menu.show {
+    display: block;
+}
+
+/* Hide the regular navigation links on smaller screens */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* Hide the regular links */
+    }
+
+    .hamburger {
+        display: block;
+        /* Ensure the hamburger is visible */
+    }
+}
+
+/* Connect Wallet Button */
+.connect-wallet {
+    margin-left: 20px;
+    background-color: #4B3621;
+    /* Light brown cappuccino color */
+    color: #fff;
+    /* Dark coffee brown for text */
+    border: 2px solid transparent;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.connected-address {
+    margin-left: 20px;
+    color: #fff;
+    /* Dark coffee brown for text */
+    border: 2px solid transparent;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effect */
+    background-color: #6F4E37;
+    border-color: #fff;
+}
+
+.connect-wallet:hover {
+    color: #fff;
+    background-color: #6F4E37;
+    border-color: #fff;
+}
+
+/* Centered Title */
+.title {
+    position: absolute;
+    /* Position the title absolutely */
+    left: 50%;
+    /* Move the title to the horizontal center */
+    transform: translateX(-50%);
+    /* Adjust for the title's own width */
+}
+
+.title h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #fff;
+    /* White text for the title */
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    /* Space between links */
+    flex: 0 0 auto;
+    /* Prevent the links from growing or shrinking */
+}
+
+.nav-links a {
+    color: #fff;
+    /* White text color */
+    text-decoration: none;
+    /* Remove underline */
+    font-size: 16px;
+    padding: 8px 16px;
+    /* Add padding to make it look like a button */
+    border: 2px solid transparent;
+    /* Transparent border by default */
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+}
+
+.nav-links a:hover {
+    color: #fff;
+    background-color: #6F4E37;
+    border-color: #fff;
+}
+
+.title h1:hover,
+.hamburger i:hover {
+    color: #6F4E37;
+}
+
+.nav-links a.active {
+    color: #fff;
+    background-color: #6F4E37;
+    border-color: #fff;
+}
+
+.title-link {
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Inherit the white color from the parent */
+}
+
+/* Mint Page Styles */
+.mint-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.mint-section {
+    font-size: 20px;
+}
+
+.mint-contract-status-container {
+    position: relative;
+    width: 100%;
+}
+
+.mint-contract-status {
+    position: absolute;
+    top: 3px;
+    /* Adjust as needed */
+    right: 10px;
+    /* Adjust as needed */
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    background-color: #D2B48C;
+    /* Optional: Add background color */
+    border: 1px solid #3E2D1E;
+    /* Optional: Add border */
+    border-radius: 5px;
+    /* Optional: Add rounded corners */
+    font-size: 14px;
+    z-index: 1000;
+    /* Ensure it stays above other content */
+    color: #3E2D1E;
+    font-weight: bolder;
+    /* font-style: italic; */
+}
+
+.status-closed {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    color: #3E2D1E;
+}
+
+.status-open {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    color: #fff;
+}
+
+.led-closed {
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
+    font-style: normal;
+}
+
+.led-open {
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(0, 255, 0);
+    font-style: normal;
+}
+
+.mint-section h2 {
+    font-size: 36px;
+    /* Larger font size for the heading */
+    margin-bottom: 20px;
+    /* Space below the heading */
+    color: #3E2D1E;
+    /* Gold color for the heading */
+    font-weight: 800;
+}
+
+#mint-button {
+    background-color: #D2B48C;
+    /* Gold color for the button */
+    color: #4B3621;
+    /* Dark coffee brown for text */
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.mint-another-container {
+    margin: 50px 0px 35px;
+}
+
+.mint-another {
+    background-color: #D2B48C;
+    /* Gold color for the button */
+    text-decoration: none;
+    color: #4B3621;
+    /* Dark coffee brown for text */
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+#mint-button:hover {
+    /* background-color: #D2B48C; */
+    /* Darker gold on hover */
+    opacity: 0.8;
+}
+
+/* Mint Controls Styles */
+/* Mint Controls Styles */
+.mint-controls {
+    display: flex;
+    gap: 10px;
+    /* Space between input and button */
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#nft-quantity {
+    padding: 10px 12px;
+    /* Adjusted padding to match button height */
+    font-size: 16px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    outline: none;
+    height: 40px;
+    /* Set a fixed height */
+    box-sizing: border-box;
+    /* Ensure padding is included in height */
+}
+
+/* Placeholder Text Styles */
+#nft-quantity::placeholder {
+    color: #fff;
+    /* Light gray placeholder text */
+    font-size: 11px;
+    /* Smaller font size for the placeholder */
+    font-style: italic;
+    opacity: 0.7;
+    padding-left: 2px;
+    /* Ensure the placeholder is fully visible */
+}
+
+
+/* Welcome Section Styles */
+.welcome-section {
+    text-align: center;
+    /* Center-align the text */
+    max-width: 800px;
+    /* Limit the width for better readability */
+    margin: 0 auto;
+    /* Center the section horizontally */
+    padding: 50px 20px;
+    /* Add some padding */
+}
+
+.welcome-section h2 {
+    font-size: 36px;
+    /* Larger font size for the heading */
+    margin-bottom: 20px;
+    /* Space below the heading */
+    color: #3E2D1E;
+    /* Gold color for the heading */
+    font-weight: 800;
+}
+
+.welcome-section p {
+    font-size: 20px;
+    /* Font size for the paragraphs */
+    line-height: 1.6;
+    /* Improve readability with line height */
+    margin-bottom: 20px;
+    /* Space between paragraphs */
+    color: #fff;
+    /* White text color */
+}
+
+/* Footer Styles */
+footer {
+    font-size: 14px;
+    flex-shrink: 0;
+    /* Prevent the footer from shrinking */
+    text-align: left;
+    /* Center-align the footer text */
+    padding: 20px;
+    /* Add some padding */
+    background-color: #4B3621;
+    /* Darker coffee brown for the footer */
+    border-top: 1px solid #3E2D1E;
+    /* Optional: Add a border */
+}
+
+/* About Section Styles */
+.about-section {
+    max-width: 800px;
+    /* Limit the width for better readability */
+    margin: 0 auto;
+    /* Center the section horizontally */
+    padding: 50px 20px;
+    /* Add some padding */
+    color: #fff;
+    /* White text color */
+}
+
+.about-section h2 {
+    font-size: 36px;
+    /* Larger font size for the heading */
+    margin-bottom: 20px;
+    /* Space below the heading */
+    color: #3E2D1E;
+    /* Gold color for the heading */
+    font-weight: 800;
+}
+
+.about-section h3 {
+    font-size: 26px;
+    /* Font size for subheadings */
+    margin-top: 30px;
+    /* Space above subheadings */
+    margin-bottom: 15px;
+    /* Space below subheadings */
+    color: #3E2D1E;
+    /* Gold color for subheadings */
+    font-weight: 800;
+}
+
+.about-section p {
+    font-size: 20px;
+    /* Font size for paragraphs */
+    line-height: 1.6;
+    /* Improve readability with line height */
+    margin-bottom: 20px;
+    /* Space between paragraphs */
+}
+
+.about-section ul {
+    list-style-type: disc;
+    /* Add bullet points to the list */
+    padding-left: 40px;
+    /* Indent the list */
+    margin-bottom: 20px;
+    /* Space below the list */
+}
+
+.about-section li {
+    font-size: 18px;
+    /* Font size for list items */
+    line-height: 1.6;
+    /* Improve readability with line height */
+    margin-bottom: 10px;
+    /* Space between list items */
+}

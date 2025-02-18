@@ -22,12 +22,20 @@ if (await getMintStatus() === false) {
 
 const mintAmountElement = document.getElementById('mint-mount');
 mintAmountElement.innerHTML = `
-    Total minted: ${await getCurrentSupply()} / ${maxMintAmount}
+    Total minted: ${await getCurrentSupply()} / ${formatNumberWithSpace(maxMintAmount)}
+`
+
+const reservedSupply = document.getElementById('reserved-supply');
+reservedSupply.innerHTML = `
+    <div class="reserved-supply">Reserved supply: &nbsp;
+        <span class="reserved-supply-amount">${await getReservedSupply()}</span>
+    </div>
 `
 
 const mintButton = document.getElementById('mint-button');
 const inputAmount = document.getElementById('nft-quantity');
 const mintSection = document.getElementById('mint-section-id');
+const carousel = document.getElementById('carousel');
 
 mintButton.addEventListener('click', async () => {
     if (inputAmount.value === '') {
@@ -54,8 +62,9 @@ mintButton.addEventListener('click', async () => {
                 <div class="mint-another-container">
                     <a class="mint-another" href="mint.html">Mint Another One</a>
                 </div>
-                <p>Total minted: ${await getCurrentSupply()} / ${maxMintAmount}</p>
+                <p>Total minted: ${await getCurrentSupply()} / ${formatNumberWithSpace(maxMintAmount)}</p>
             `;
+            carousel.innerHTML = ''
         } else {
             alert('Transaction failed. Please try again.');
         }
@@ -66,6 +75,43 @@ mintButton.addEventListener('click', async () => {
 
     inputAmount.value = '';
 })
+
+// Array of image paths for the carousel
+const images = [
+    "./images/Latte.jpg",
+    "./images/Americano.jpg",
+    "./images/Espresso.jpg",
+    "./images/Cappuccino.jpg",
+];
+
+// Get the carousel image element
+const carouselImage = document.getElementById('carousel-image');
+
+let currentIndex = 0;
+
+// Function to change the image with a fade effect
+function changeImage() {
+    // Fade out the current image
+    carouselImage.style.opacity = 0;
+
+    // Wait for the fade-out transition to complete
+    setTimeout(() => {
+        // Update the image source
+        carouselImage.src = images[currentIndex];
+
+        // Fade in the new image
+        carouselImage.style.opacity = 1;
+
+        // Increment the index or reset to 0 if at the end of the array
+        currentIndex = (currentIndex + 1) % images.length;
+    }, 500); // Match this duration with the CSS transition duration
+}
+
+// Change the image every 5 seconds (5000 milliseconds)
+setInterval(changeImage, 5000);
+
+// Initialize the first image
+changeImage();
 
 
 function checkIfOneNft(number) {
@@ -149,6 +195,18 @@ async function getCurrentSupply() {
     }
 }
 
+async function getReservedSupply() {
+    const contract = await initializeContract();
+
+    try {
+        const reservedSupply = await contract.methods.getReservedSupply().call();
+        console.log(`Reserved NFT supply: ${reservedSupply}`);
+        return Number(reservedSupply) / 10 ** 18;
+    } catch (error) {
+        console.error('Error getting balance:', error);
+    }
+}
+
 async function mintNft(mintAmount) {
     const contract = await initializeContract();
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
@@ -176,8 +234,12 @@ async function checkMintAmountLeft() {
     } else {
         return `
             <p>
-                There is still ${mintAmountRemaining} ${checkIfOneNft(mintAmountRemaining)} with your name left!
+                There are still ${mintAmountRemaining} more ${checkIfOneNft(mintAmountRemaining)} with your name left!
             </p>
         `
     }
+}
+
+function formatNumberWithSpace(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }

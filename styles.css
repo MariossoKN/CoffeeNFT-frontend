@@ -186,7 +186,7 @@ footer {
 
 .title h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 34px;
     color: #fff;
     /* White text for the title */
 }
@@ -238,12 +238,20 @@ footer {
     /* Remove underline */
     color: inherit;
     /* Inherit the white color from the parent */
+    font-family: "Dancing Script";
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
 }
 
 /* Mint Page Styles */
 .mint-section {
     text-align: center;
-    padding: 50px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    /* padding: 50px 20px; */
 }
 
 .mint-section {
@@ -261,9 +269,9 @@ footer {
     /* Adjust as needed */
     right: 10px;
     /* Adjust as needed */
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-bottom: 2px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 3px;
     background-color: #D2B48C;
     /* Optional: Add background color */
     border: 1px solid #3E2D1E;
@@ -306,6 +314,41 @@ footer {
     font-style: normal;
 }
 
+.mint-reserved-supply-container {
+    position: relative;
+    width: 100%;
+}
+
+.reserved-supply {
+    position: absolute;
+    top: 48px;
+    /* Adjust as needed */
+    right: 10px;
+    /* Adjust as needed */
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    background-color: #D2B48C;
+    /* Optional: Add background color */
+    border: 1px solid #3E2D1E;
+    /* Optional: Add border */
+    border-radius: 5px;
+    /* Optional: Add rounded corners */
+    font-size: 14px;
+    z-index: 1000;
+    /* Ensure it stays above other content */
+    color: #3E2D1E;
+    font-weight: bolder;
+}
+
+.reserved-supply-amount {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    color: #fff;
+}
+
 .mint-section h2 {
     font-size: 36px;
     /* Larger font size for the heading */
@@ -331,6 +374,36 @@ footer {
     transition: all 0.3s ease;
 }
 
+#mint-button:hover {
+    /* background-color: #D2B48C; */
+    /* Darker gold on hover */
+    opacity: 0.8;
+}
+
+#nft-quantity {
+    padding: 10px 20px;
+    /* Adjusted padding to match button height */
+    font-size: 16px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    background-color: transparent;
+    color: #fff;
+    outline: none;
+    height: 40px;
+    /* Set a fixed height */
+    box-sizing: border-box;
+    /* Ensure padding is included in height */
+}
+
+/* Placeholder Text Styles */
+#nft-quantity::placeholder {
+    color: #dfd7d7;
+    /* Light gray placeholder text */
+    font-size: 14px;
+    /* Smaller font size for the placeholder */
+    opacity: 0.7;
+}
+
 .mint-another-container {
     margin: 50px 0px 35px;
 }
@@ -351,9 +424,7 @@ footer {
     transition: all 0.3s ease;
 }
 
-#mint-button:hover {
-    /* background-color: #D2B48C; */
-    /* Darker gold on hover */
+.mint-another:hover {
     opacity: 0.8;
 }
 
@@ -368,65 +439,107 @@ footer {
     margin-top: 20px;
 }
 
-#nft-quantity {
-    padding: 10px 12px;
-    /* Adjusted padding to match button height */
-    font-size: 16px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background-color: transparent;
-    color: #fff;
-    outline: none;
-    height: 40px;
-    /* Set a fixed height */
-    box-sizing: border-box;
-    /* Ensure padding is included in height */
-}
-
-/* Placeholder Text Styles */
-#nft-quantity::placeholder {
-    color: #fff;
-    /* Light gray placeholder text */
-    font-size: 11px;
-    /* Smaller font size for the placeholder */
-    font-style: italic;
-    opacity: 0.7;
-    padding-left: 2px;
-    /* Ensure the placeholder is fully visible */
-}
-
-
+/* Welcome Section Styles */
 /* Welcome Section Styles */
 .welcome-section {
     text-align: center;
-    /* Center-align the text */
-    max-width: 800px;
-    /* Limit the width for better readability */
+    max-width: 100%;
+    /* Allow the section to take full width */
     margin: 0 auto;
-    /* Center the section horizontally */
-    padding: 50px 20px;
-    /* Add some padding */
+    padding: 0;
+    /* Remove padding to allow the image to take full width */
+    position: relative;
+    /* Needed for absolute positioning of text */
 }
 
-.welcome-section h2 {
-    font-size: 36px;
-    /* Larger font size for the heading */
-    margin-bottom: 20px;
-    /* Space below the heading */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 81vh;
+    /* Make the container take the full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Ensure the image doesn't overflow */
+}
+
+.welcome-image {
+    width: 95%;
+    /* Adjust this to your desired image width */
+    height: 92%;
+    /* Adjust this to your desired image height */
+    object-fit: scale-down;
+    /* Ensure the image covers the container */
+    object-position: center;
+    /* Center the image within the container */
+}
+
+.text-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d2b48c18;
+    /* Semi-transparent black background */
+    backdrop-filter: blur(4px);
+    /* Blur effect */
+    padding: 10px;
+    border-radius: 10px;
+    /* Rounded corners */
+    text-align: center;
     color: #3E2D1E;
-    /* Gold color for the heading */
-    font-weight: 800;
+    /* White text for contrast */
+    width: 80%;
+    /* Adjust the width of the text containers */
+    max-width: 600px;
+    /* Limit the maximum width */
 }
 
-.welcome-section p {
+.top-text {
+    top: 2%;
+    /* Position the top text container */
+}
+
+.bottom-text {
+    bottom: 2%;
+    /* Position the bottom text container */
+    color: white;
+}
+
+.top-text h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.bottom-text p {
     font-size: 20px;
-    /* Font size for the paragraphs */
-    line-height: 1.6;
-    /* Improve readability with line height */
-    margin-bottom: 20px;
-    /* Space between paragraphs */
-    color: #fff;
-    /* White text color */
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Collection Carousel Styles */
+.collection-carousel {
+    text-align: center;
+    margin-top: 5px;
+    /* Space above the carousel */
+    margin-bottom: 40px;
+    /* Space below the carousel */
+}
+
+.carousel-image {
+    max-width: 100%;
+    /* Ensure the image doesn't exceed its container */
+    max-height: 300px;
+    /* Set a maximum height for the image */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* Add a subtle shadow */
+    opacity: 1;
+    /* Start fully visible */
+    transition: opacity 0.5s ease-in-out;
+    /* Smooth transition for fade effect */
 }
 
 /* Footer Styles */
@@ -436,7 +549,7 @@ footer {
     /* Prevent the footer from shrinking */
     text-align: left;
     /* Center-align the footer text */
-    padding: 20px;
+    padding: 14px;
     /* Add some padding */
     background-color: #4B3621;
     /* Darker coffee brown for the footer */

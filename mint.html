@@ -8,6 +8,9 @@
     <title>Mint - Coffee NFT</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" defer></script>
 </head>
 
@@ -52,15 +55,24 @@
                 <span class="status-closed">Closed</span>
             </div>
         </div>
+        <div class="mint-reserved-supply-container" id="reserved-supply">
+            <div class="reserved-supply">Reserved supply: &nbsp;
+                <span class="reserved-supply-amount"></span>
+            </div>
+        </div>
         <section class="mint-section" id="mint-section-id">
             <h2>Mint Your Coffee NFT</h2>
             <p>Welcome to the minting page! Here you can create your very own Coffee NFTs ☕</p>
             <div class="mint-controls">
-                <input type="number" id="nft-quantity" placeholder="Amount..." min="1" max="10">
+                <input type="number" id="nft-quantity" placeholder="Amount" min="1" max="10">
                 <button id="mint-button">Mint Now</button>
             </div>
             <p id="mint-mount"></p>
         </section>
+        <!-- Image Carousel Section -->
+        <div class="collection-carousel" id="carousel">
+            <img src="./images/Cappuccino.jpg" alt="Coffee NFT Collection" id="carousel-image" class="carousel-image">
+        </div>
     </main>
 
     <footer>

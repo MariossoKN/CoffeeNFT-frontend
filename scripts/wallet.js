@@ -1,9 +1,5 @@
 import { contractAddress, contractABI } from './contract.js';
 
-// // Initialize Web3 and contract variables
-// let web3;
-// let contract;
-
 // Wait for the page to fully load before initializing
 document.addEventListener('DOMContentLoaded', async () => {
     // Get reference to the Connect Wallet button

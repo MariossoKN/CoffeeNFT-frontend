@@ -1,4 +1,5 @@
 import { initializeContract } from "./wallet.js";
+import { checkIfOneNft } from "./mint.js";
 
 // Coffee contract functions
 export async function getMintPrice() {
@@ -103,6 +104,21 @@ export async function mintNft(mintAmount) {
         throw error; // Re-throw the error to handle it in the calling function
     }
 }
+export async function mintReservedSupply(mintAmount) {
+    const contract = await initializeContract();
+    const accounts = await window.ethereum.request({ method: "eth_accounts" });
+
+    try {
+        const tx = await contract.methods.mintReservedSupply(mintAmount).send({
+            from: accounts[0],
+        });
+        console.log('Reserved supply mint successful:', tx);
+        return tx;
+    } catch (error) {
+        console.error('Error minting:', error);
+        throw error; // Re-throw the error to handle it in the calling function
+    }
+}
 
 export async function checkMintAmountLeft() {
     const amountMinted = await getMintAmount();
@@ -116,5 +132,17 @@ export async function checkMintAmountLeft() {
                 There are still ${mintAmountRemaining} more ${checkIfOneNft(mintAmountRemaining)} with your name left!
             </p>
         `
+    }
+}
+
+export async function getOwnerAddress() {
+    const contract = await initializeContract();
+
+    try {
+        const ownerAddress = await contract.methods.owner().call();
+        console.log(`Owners address: ${ownerAddress}`);
+        return ownerAddress;
+    } catch (error) {
+        console.error('Error getting balance:', error);
     }
 }

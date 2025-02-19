@@ -1,4 +1,4 @@
-import { getMintStatus, getCurrentSupply, mintNft, getTotalSupply, getReservedSupply } from "./contractFunctions.js"
+import { getMintStatus, getCurrentSupply, mintNft, getTotalSupply, getReservedSupply, getOwnerAddress, mintReservedSupply, checkMintAmountLeft } from "./contractFunctions.js"
 
 await loadHTML();
 
@@ -33,8 +33,8 @@ async function loadHTML() {
         <span class="reserved-supply-amount">${await getReservedSupply()}</span>
     </div>
 `
-
     const mintButton = document.getElementById('mint-button');
+    const reservedButtonContainer = document.getElementById('reserved-button-container');
     const inputAmount = document.getElementById('nft-quantity');
     const mintSection = document.getElementById('mint-section-id');
     const carousel = document.getElementById('carousel');
@@ -78,7 +78,43 @@ async function loadHTML() {
         inputAmount.value = '';
     })
 
+    const accounts = await window.ethereum.request({ method: "eth_accounts" });
 
+    if (accounts[0].toLowerCase() === (await getOwnerAddress()).toLowerCase()) {
+        reservedButtonContainer.innerHTML = `
+            <button class="reserved-button-on" id="reserved-mint-button">Mint reserved supply</button>
+        `
+
+        const reservedButton = document.getElementById('reserved-mint-button');
+
+        reservedButton.addEventListener('click', async () => {
+            if (inputAmount.value === '') {
+                alert('Please enter a valid number of NFTs to mint.');
+                return;
+            }
+
+            try {
+                const tx = await mintReservedSupply(Number(inputAmount.value));
+
+                if (tx.status) {
+                    // Update the UI only if the transaction was successful
+                    mintSection.innerHTML = `
+                    <h2>🎉 Congratulations 🎉</h2>
+                    <p>You successfully minted ${inputAmount.value} ${checkIfOneNft(Number(inputAmount.value))} from reserved supply.</p>
+                    <p>Total minted: ${await getCurrentSupply()} / ${formatNumberWithSpace(maxMintAmount)}</p>
+                `;
+                    carousel.innerHTML = ''
+                } else {
+                    alert('Transaction failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error minting NFT:', error);
+                alert('An error occurred while minting. Please try again.');
+            }
+
+            inputAmount.value = '';
+        })
+    }
 }
 
 // Array of image paths for the carousel
@@ -118,7 +154,7 @@ setInterval(changeImage, 5000);
 // Initialize the first image
 changeImage();
 
-function checkIfOneNft(number) {
+export function checkIfOneNft(number) {
     if (number === 1) {
         return "NFT";
     } else {

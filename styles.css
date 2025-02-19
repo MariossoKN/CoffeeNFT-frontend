@@ -559,17 +559,66 @@ footer {
 
 /* Footer Styles */
 footer {
-    font-size: 14px;
-    flex-shrink: 0;
-    /* Prevent the footer from shrinking */
-    text-align: left;
-    /* Center-align the footer text */
-    padding: 14px;
-    /* Add some padding */
+    position: fixed;
+    /* Make the footer stick to the bottom */
+    bottom: 0;
+    /* Position at the bottom of the viewport */
+    left: 0;
+    /* Stretch across the entire width */
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    /* Space between text and logos */
+    align-items: center;
+    /* Vertically center content */
+    padding: 14px 20px;
+    /* Add padding for spacing */
     background-color: #4B3621;
     /* Darker coffee brown for the footer */
     border-top: 1px solid #3E2D1E;
     /* Optional: Add a border */
+    z-index: 1000;
+    /* Ensure the footer stays above other content */
+}
+
+.footer-logos {
+    display: flex;
+    gap: 32px;
+    /* Space between logos */
+}
+
+/* Default logo size */
+.footer-logo {
+    transition: opacity 0.3s ease;
+    /* Smooth hover effect */
+}
+
+.footer-logo:hover {
+    opacity: 0.8;
+    /* Slightly fade logos on hover */
+}
+
+/* Individual logo sizes */
+.x-logo {
+    width: 24px;
+    /* Adjust X logo size */
+    height: 24px;
+    /* Adjust X logo size */
+}
+
+.opensea-logo {
+    width: 28px;
+    /* Adjust OpenSea logo size */
+    height: 28px;
+    /* Adjust OpenSea logo size */
+}
+
+.discord-logo {
+    width: 26px;
+    /* Adjust Discord logo size */
+    height: 26px;
+    /* Adjust Discord logo size */
+    margin-right: 25px;
 }
 
 /* About Section Styles */

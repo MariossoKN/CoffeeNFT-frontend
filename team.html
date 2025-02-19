@@ -5,18 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Coffe NFT</title>
-    <meta name="description" content="A brief description of your page">
+    <title>Team - Coffee NFT</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Add any additional meta tags, fonts, or stylesheets here -->
-    <!-- Add Pacifico Font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" defer></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script> -->
 </head>
 
 <body>
@@ -31,6 +25,7 @@
                         <a href="coffe.html">Home</a>
                         <a href="mint.html">Mint</a>
                         <a href="about.html">About</a>
+                        <a href="team.html">Team</a>
                     </div>
                 </div>
                 <button class="connect-wallet" id="connectWallet">Connect Wallet</button>
@@ -47,14 +42,59 @@
             <!-- Links (Right) -->
             <div class="nav-links">
                 <a href="mint.html">Mint</a>
-                <a href="team.html" class="active">Team</a> <!-- Updated Twitter link -->
+                <a href="team.html" class="active">Team</a>
                 <a href="about.html">About</a>
             </div>
         </nav>
     </header>
 
     <main>
+        <section class="team-section">
+            <h2>Our Team</h2>
+            <p>Meet the talented individuals behind Coffee NFT. Each member brings unique skills and passion to the
+                project, ensuring the best experience for our community.</p>
 
+            <div class="team-members">
+                <!-- Team Member 1: Artist -->
+                <div class="team-member">
+                    <img src="./images/team/profile.png" alt="Artist" class="team-photo">
+                    <h3>Alice Brewster</h3>
+                    <p class="position">Lead Artist</p>
+                    <p class="about">Alice is the creative genius behind the stunning Coffee NFT designs. With a
+                        background in digital art and a love for coffee, she brings each NFT to life with vibrant colors
+                        and intricate details.</p>
+                    <a href="https://x.com/alicebrewster" target="_blank" rel="noopener noreferrer"
+                        class="twitter-link">
+                        <img src="./logos/X-white.png" alt="X (Twitter)" class="twitter-logo">
+                    </a>
+                </div>
+
+                <!-- Team Member 2: Developer -->
+                <div class="team-member">
+                    <img src="./images/team/profile.png" alt="Developer" class="team-photo">
+                    <h3>John Roast</h3>
+                    <p class="position">Blockchain Developer</p>
+                    <p class="about">John is the technical wizard who ensures the Coffee NFT platform runs smoothly.
+                        With years of experience in blockchain development, he builds secure and efficient smart
+                        contracts.</p>
+                    <a href="https://x.com/johnroast" target="_blank" rel="noopener noreferrer" class="twitter-link">
+                        <img src="./logos/X-white.png" alt="X (Twitter)" class="twitter-logo">
+                    </a>
+                </div>
+
+                <!-- Team Member 3: Social Media Manager -->
+                <div class="team-member">
+                    <img src="./images/team/profile.png" alt="Social Media Manager" class="team-photo">
+                    <h3>Emily Grind</h3>
+                    <p class="position">Social Media Manager</p>
+                    <p class="about">Emily is the voice of Coffee NFT on social media. She keeps our community engaged
+                        and informed, sharing updates, memes, and coffee-related content daily.</p>
+                    <a href="https://x.com/emilygrind" target="_blank" rel="noopener noreferrer" class="twitter-link">
+                        <img src="./logos/X-white.png" alt="X (Twitter)" class="twitter-logo">
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -74,7 +114,6 @@
 
     <script src="./scripts/hamburger.js" defer></script>
     <script src="./scripts/wallet.js" type="module" defer></script>
-    <script src="./scripts/contract.js" type="module" defer></script>
 </body>
 
 </html>

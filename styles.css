@@ -560,65 +560,138 @@ footer {
 /* Footer Styles */
 footer {
     position: fixed;
-    /* Make the footer stick to the bottom */
     bottom: 0;
-    /* Position at the bottom of the viewport */
     left: 0;
-    /* Stretch across the entire width */
     right: 0;
     display: flex;
     justify-content: space-between;
-    /* Space between text and logos */
     align-items: center;
-    /* Vertically center content */
     padding: 14px 20px;
-    /* Add padding for spacing */
     background-color: #4B3621;
-    /* Darker coffee brown for the footer */
     border-top: 1px solid #3E2D1E;
-    /* Optional: Add a border */
     z-index: 1000;
-    /* Ensure the footer stays above other content */
 }
 
 .footer-logos {
     display: flex;
-    gap: 32px;
-    /* Space between logos */
+    gap: 40px;
 }
 
 /* Default logo size */
 .footer-logo {
-    transition: opacity 0.3s ease;
-    /* Smooth hover effect */
+    transition: transform 0.3s ease;
+    /* Smooth scaling effect */
 }
 
+/* Hover effect: Scale logos */
 .footer-logo:hover {
-    opacity: 0.8;
-    /* Slightly fade logos on hover */
-}
-
-/* Individual logo sizes */
-.x-logo {
-    width: 24px;
-    /* Adjust X logo size */
-    height: 24px;
-    /* Adjust X logo size */
+    transform: scale(1.2);
+    /* Increase size by 20% */
 }
 
 .opensea-logo {
-    width: 28px;
-    /* Adjust OpenSea logo size */
-    height: 28px;
-    /* Adjust OpenSea logo size */
+    width: 30px;
+    height: 30px;
+}
+
+.x-logo {
+    width: 26px;
+    height: 26px;
 }
 
 .discord-logo {
-    width: 26px;
-    /* Adjust Discord logo size */
-    height: 26px;
-    /* Adjust Discord logo size */
-    margin-right: 25px;
+    width: 30px;
+    height: 30px;
+}
+
+.discord-logo {
+    margin-right: 35px;
+}
+
+/* Team Section Styles */
+.team-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.team-section h2 {
+    font-size: 36px;
+    color: #3E2D1E;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.team-section p {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    background-color: #4B3621;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    /* Needed for absolute positioning of the Twitter logo */
+}
+
+.team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.team-member h3 {
+    font-size: 24px;
+    color: #D2B48C;
+    margin-bottom: 10px;
+}
+
+.team-member .position {
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.team-member .about {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.5;
+}
+
+.twitter-link {
+    position: absolute;
+    bottom: 12px;
+    /* Position at the bottom */
+    right: 18px;
+    /* Position at the right */
+}
+
+.twitter-logo {
+    width: 24px;
+    /* Adjust logo size */
+    height: 24px;
+    /* Adjust logo size */
+    transition: transform 0.3s ease;
+    /* Smooth scaling effect */
+}
+
+.twitter-logo:hover {
+    transform: scale(1.2);
+    /* Increase size on hover */
 }
 
 /* About Section Styles */

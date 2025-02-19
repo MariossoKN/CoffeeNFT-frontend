@@ -244,46 +244,42 @@ footer {
     font-style: normal;
 }
 
-/* Mint Page Styles */
-.mint-section {
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    /* padding: 50px 20px; */
-}
-
-.mint-section {
-    font-size: 20px;
+/* Mint info */
+.mint-contract-status-container,
+.mint-reserved-supply-container,
+.mint-price-container {
+    width: 169px;
+    /* Set a fixed width */
+    position: absolute;
+    right: 28px;
+    /* Adjust as needed */
+    background-color: #D2B48C;
+    border: 1px solid #3E2D1E;
+    border-radius: 5px;
+    font-size: 15px;
+    z-index: 1000;
+    color: #3E2D1E;
+    font-weight: bold;
+    padding: 10px;
+    /* Add padding for better spacing */
+    text-align: left;
+    /* Center the text */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .mint-contract-status-container {
-    position: relative;
-    width: 100%;
+    top: 85px;
+    /* Adjust as needed */
 }
 
-.mint-contract-status {
-    position: absolute;
-    top: 3px;
+.mint-reserved-supply-container {
+    top: 136px;
     /* Adjust as needed */
-    right: 10px;
+}
+
+.mint-price-container {
+    top: 186px;
     /* Adjust as needed */
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 3px;
-    background-color: #D2B48C;
-    /* Optional: Add background color */
-    border: 1px solid #3E2D1E;
-    /* Optional: Add border */
-    border-radius: 5px;
-    /* Optional: Add rounded corners */
-    font-size: 14px;
-    z-index: 1000;
-    /* Ensure it stays above other content */
-    color: #3E2D1E;
-    font-weight: bolder;
-    /* font-style: italic; */
 }
 
 .status-closed {
@@ -294,59 +290,49 @@ footer {
 }
 
 .status-open {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     font-style: normal;
     color: #fff;
 }
 
 .led-closed {
-    font-size: 22px;
+    font-size: 15px;
     font-weight: bold;
     color: red;
     font-style: normal;
 }
 
 .led-open {
-    font-size: 22px;
+    font-size: 15px;
     font-weight: bold;
     color: rgb(0, 255, 0);
     font-style: normal;
 }
 
-.mint-reserved-supply-container {
-    position: relative;
-    width: 100%;
-}
-
-.reserved-supply {
-    position: absolute;
-    top: 48px;
-    /* Adjust as needed */
-    right: 10px;
-    /* Adjust as needed */
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-bottom: 7px;
-    padding-top: 7px;
-    background-color: #D2B48C;
-    /* Optional: Add background color */
-    border: 1px solid #3E2D1E;
-    /* Optional: Add border */
-    border-radius: 5px;
-    /* Optional: Add rounded corners */
-    font-size: 14px;
-    z-index: 1000;
-    /* Ensure it stays above other content */
-    color: #3E2D1E;
-    font-weight: bolder;
-}
-
 .reserved-supply-amount {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     font-style: normal;
     color: #fff;
+}
+
+.price {
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    color: #fff;
+}
+
+/* Mint Page Styles */
+.mint-section {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    /* padding: 50px 20px; */
 }
 
 .mint-section h2 {
@@ -373,6 +359,8 @@ footer {
     margin-top: 20px;
     margin-left: 5px;
     transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #mint-button:hover {
@@ -399,6 +387,8 @@ footer {
     margin-top: 20px;
     margin-left: 5px;
     transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .reserved-button-on:hover {
@@ -424,7 +414,7 @@ footer {
 #nft-quantity::placeholder {
     color: #dfd7d7;
     /* Light gray placeholder text */
-    font-size: 14px;
+    font-size: 13px;
     /* Smaller font size for the placeholder */
     opacity: 0.7;
 }
@@ -546,7 +536,7 @@ footer {
 /* Collection Carousel Styles */
 .collection-carousel {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 42px;
     /* Space above the carousel */
     margin-bottom: 40px;
     /* Space below the carousel */

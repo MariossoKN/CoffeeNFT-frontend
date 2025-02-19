@@ -52,12 +52,17 @@
         <div class="mint-contract-status-container" id="contract-status">
             <div class="mint-contract-status">Mint Status: &nbsp;
                 <span class="led-closed">&#10625; </span>
-                <span class="status-closed">Closed</span>
+                <span class="status-closed"> Closed</span>
             </div>
         </div>
         <div class="mint-reserved-supply-container" id="reserved-supply">
             <div class="reserved-supply">Reserved supply: &nbsp;
                 <span class="reserved-supply-amount"></span>
+            </div>
+        </div>
+        <div class="mint-price-container" id="mint-price">
+            <div class="mint-price">Mint Price: &nbsp;
+                <span class="price"></span>
             </div>
         </div>
         <section class="mint-section" id="mint-section-id">
@@ -83,10 +88,11 @@
         <p>&copy; 2025 Coffee NFT. All rights reserved.</p>
     </footer>
 
+    <script src="./scripts/hamburger.js" defer></script>
     <script src="./scripts/wallet.js" type="module" defer></script>
     <script src="./scripts/contract.js" type="module" defer></script>
     <script src="./scripts/mint.js" type="module"></script>
-    <script src="./scripts/contractFunctions.js" type="module"></script>
+    <!-- <script src="./scripts/contractFunctions.js" type="module"></script> -->
 </body>
 
 </html>

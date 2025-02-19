@@ -1,38 +1,47 @@
-import { getMintStatus, getCurrentSupply, mintNft, getTotalSupply, getReservedSupply, getOwnerAddress, mintReservedSupply, checkMintAmountLeft } from "./contractFunctions.js"
+import { getMintStatus, getCurrentSupply, mintNft, getTotalSupply, getReservedSupply, getOwnerAddress, mintReservedSupply, checkMintAmountLeft, getMintPrice } from "./contractFunctions.js"
 
 await loadHTML();
 
 async function loadHTML() {
-    const maxMintAmount = await getTotalSupply();
 
     const mintContractStatusContainer = document.getElementById('contract-status');
     if (await getMintStatus() === false) {
         mintContractStatusContainer.innerHTML = `
     <div class="mint-contract-status" id="contract-status">Mint Status: &nbsp;
-        <span class="led-closed">&#10625; </span>
-        <span class="status-closed">Closed</span>
+        <span class="led-closed">&#10625; &nbsp; </span>
+        <span class="status-closed"> Closed</span>
     </div>
     `
     } else {
         mintContractStatusContainer.innerHTML = `
     <div class="mint-contract-status" id="contract-status">Mint Status: &nbsp;
-        <span class="led-open">&#10625; </span>
-        <span class="status-open">Open</span>
+        <span class="led-open">&#10625; &nbsp; </span>
+        <span class="status-open"> Open</span>
     </div>
     `
     }
 
-    const mintAmountElement = document.getElementById('mint-mount');
-    mintAmountElement.innerHTML = `
-    Total minted: ${await getCurrentSupply()} / ${formatNumberWithSpace(maxMintAmount)}
-`
-
     const reservedSupply = document.getElementById('reserved-supply');
     reservedSupply.innerHTML = `
-    <div class="reserved-supply">Reserved supply: &nbsp;
-        <span class="reserved-supply-amount">${await getReservedSupply()}</span>
-    </div>
-`
+        <div class="reserved-supply">Reserved supply: &nbsp;
+            <span class="reserved-supply-amount">${await getReservedSupply()}</span>
+        </div>
+    `
+
+    const mintPrice = document.getElementById('mint-price');
+    mintPrice.innerHTML = `
+        <div class="mint-price">Mint Price: &nbsp;
+            <span class="price">${Number(await getMintPrice()) / 10 ** 18} ETH</span>
+        </div>
+    `
+
+    const maxMintAmount = await getTotalSupply();
+
+    const mintAmountElement = document.getElementById('mint-mount');
+    mintAmountElement.innerHTML = `
+        Total minted: ${await getCurrentSupply()} / ${formatNumberWithSpace(maxMintAmount)}
+    `
+
     const mintButton = document.getElementById('mint-button');
     const reservedButtonContainer = document.getElementById('reserved-button-container');
     const inputAmount = document.getElementById('nft-quantity');

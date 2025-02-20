@@ -1,39 +1,10 @@
 import { contractAddress, contractABI } from './contract.js';
 
+// Get reference to the Connect Wallet button
+const connectWalletButton = document.getElementById('connectWallet');
+
 // Wait for the page to fully load before initializing
 document.addEventListener('DOMContentLoaded', async () => {
-    // Get reference to the Connect Wallet button
-    const connectWalletButton = document.getElementById('connectWallet');
-
-    // Function to connect to MetaMask
-    async function connectMetaMask() {
-        try {
-            // Check if MetaMask is installed
-            if (typeof window.ethereum === 'undefined') {
-                alert('MetaMask is not installed. Please install it to use this feature.');
-                return;
-            }
-            initializeContract();
-            // Initialize Web3 instance
-            // web3 = new Web3(window.ethereum);
-
-            // Request account access
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            const walletAddress = accounts[0];
-
-            // Initialize contract
-            // contract = new web3.eth.Contract(contractABI, contractAddress);
-
-            // Update button text and style
-            connectWalletButton.innerHTML = `${walletAddress.slice(0, 7)}...${walletAddress.slice(37, 42)}`;
-            connectWalletButton.classList.add('connected-address');
-
-            console.log('Successfully connected to wallet:', walletAddress);
-        } catch (error) {
-            console.error('Error connecting to MetaMask:', error);
-            alert('Failed to connect to MetaMask. Please try again.');
-        }
-    }
 
     // Function to check if already connected
     async function checkIfConnected() {
@@ -92,4 +63,34 @@ export function initializeContract() {
     contract = new web3.eth.Contract(contractABI, contractAddress);
 
     return (contract);
+}
+
+// Function to connect to MetaMask
+export async function connectMetaMask() {
+    try {
+        // Check if MetaMask is installed
+        if (typeof window.ethereum === 'undefined') {
+            alert('MetaMask is not installed. Please install it to use this feature.');
+            return;
+        }
+        initializeContract();
+        // Initialize Web3 instance
+        // web3 = new Web3(window.ethereum);
+
+        // Request account access
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const walletAddress = accounts[0];
+
+        // Initialize contract
+        // contract = new web3.eth.Contract(contractABI, contractAddress);
+
+        // Update button text and style
+        connectWalletButton.innerHTML = `${walletAddress.slice(0, 7)}...${walletAddress.slice(37, 42)}`;
+        connectWalletButton.classList.add('connected-address');
+
+        console.log('Successfully connected to wallet:', walletAddress);
+    } catch (error) {
+        console.error('Error connecting to MetaMask:', error);
+        alert('Failed to connect to MetaMask. Please try again.');
+    }
 }

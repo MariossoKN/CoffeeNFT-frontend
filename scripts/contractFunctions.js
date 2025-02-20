@@ -7,7 +7,7 @@ export async function getMintPrice() {
 
     try {
         const mintPrice = await contract.methods.getMintPrice().call();
-        console.log('NFT mint price:', mintPrice);
+        // console.log('NFT mint price:', mintPrice);
         return mintPrice;
     } catch (error) {
         console.error('Error getting balance:', error);
@@ -19,7 +19,7 @@ export async function getMintStatus() {
 
     try {
         const mintStatus = await contract.methods.getMintStatus().call();
-        console.log('NFT mint status:', mintStatus);
+        // console.log('NFT mint status:', mintStatus);
         return mintStatus;
     } catch (error) {
         console.error('Error getting balance:', error);
@@ -32,7 +32,7 @@ export async function getMintAmount() {
 
     try {
         const mintAmount = await contract.methods.getMintAmount(accounts[0]).call();
-        console.log(`Address ${accounts[0].slice(0, 7)}...${accounts[0].slice(37, 42)} minted ${mintAmount} NFTs so far.`);
+        // console.log(`Address ${accounts[0].slice(0, 7)}...${accounts[0].slice(37, 42)} minted ${mintAmount} NFTs so far.`);
         return mintAmount;
     } catch (error) {
         console.error('Error getting balance:', error);
@@ -44,7 +44,7 @@ export async function getMaxMintAmount() {
     const mintAmount = await getMintAmount();
     try {
         const maxMintAmount = await contract.methods.getMaxMintAmount().call();
-        console.log(`You can mint ${(Number(maxMintAmount) - Number(mintAmount))} NFTs.`);
+        // console.log(`You can mint ${(Number(maxMintAmount) - Number(mintAmount))} NFTs.`);
         return maxMintAmount;
     } catch (error) {
         console.error('Error getting balance:', error);
@@ -56,7 +56,7 @@ export async function getTotalSupply() {
 
     try {
         const totalSupply = await contract.methods.getTotalSupply().call();
-        console.log(`Total NFT supply: ${Number(totalSupply) / 10 ** 18}`);
+        // console.log(`Total NFT supply: ${Number(totalSupply) / 10 ** 18}`);
         return Number(totalSupply) / 10 ** 18;
     } catch (error) {
         console.error('Error getting balance:', error);
@@ -68,7 +68,7 @@ export async function getCurrentSupply() {
 
     try {
         const currentSupply = await contract.methods.getCurrentSupply().call();
-        console.log(`Current NFT supply: ${currentSupply}`);
+        // console.log(`Current NFT supply: ${currentSupply}`);
         return currentSupply;
     } catch (error) {
         console.error('Error getting balance:', error);
@@ -80,7 +80,7 @@ export async function getReservedSupply() {
 
     try {
         const reservedSupply = await contract.methods.getReservedSupply().call();
-        console.log(`Reserved NFT supply: ${reservedSupply}`);
+        // console.log(`Reserved NFT supply: ${reservedSupply}`);
         return Number(reservedSupply) / 10 ** 18;
     } catch (error) {
         console.error('Error getting balance:', error);
@@ -112,7 +112,7 @@ export async function mintReservedSupply(mintAmount) {
         const tx = await contract.methods.mintReservedSupply(mintAmount).send({
             from: accounts[0],
         });
-        console.log('Reserved supply mint successful:', tx);
+        // console.log('Reserved supply mint successful:', tx);
         return tx;
     } catch (error) {
         console.error('Error minting:', error);
@@ -140,7 +140,7 @@ export async function getOwnerAddress() {
 
     try {
         const ownerAddress = await contract.methods.owner().call();
-        console.log(`Owners address: ${ownerAddress}`);
+        // console.log(`Owners address: ${ownerAddress}`);
         return ownerAddress;
     } catch (error) {
         console.error('Error getting balance:', error);

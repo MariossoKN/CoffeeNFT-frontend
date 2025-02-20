@@ -1,96 +1,101 @@
-import { contractAddress, contractABI } from './contract.js';
+import { contractAddress, contractABI } from "./contract.js";
 
-// Get reference to the Connect Wallet button
-const connectWalletButton = document.getElementById('connectWallet');
+// DOM Elements
+const connectWalletButton = document.getElementById("connectWallet");
 
-// Wait for the page to fully load before initializing
-document.addEventListener('DOMContentLoaded', async () => {
+// Initialize Web3 and contract instances
+let web3;
+let contract;
 
-    // Function to check if already connected
-    async function checkIfConnected() {
-        try {
-            const accounts = await window.ethereum.request({ method: "eth_accounts" });
-            if (accounts.length > 0) {
-                connectWalletButton.innerHTML = `${accounts[0].slice(0, 7)}...${accounts[0].slice(37, 42)}`;
-                connectWalletButton.classList.add('connected-address');
-                console.log('Address connected:', accounts[0]);
-
-                initializeContract();
-
-                // Initialize Web3 and contract for already connected accounts
-                // web3 = new Web3(window.ethereum);
-                // contract = new web3.eth.Contract(contractABI, contractAddress);
-
-            } else {
-                console.log('No address connected');
-            }
-        } catch (error) {
-            console.error('Error checking connection status:', error);
-        }
+/**
+ * Initializes the Web3 instance and contract.
+ * @returns {object} The initialized contract instance.
+ */
+export function initializeContract() {
+    if (!web3) {
+        web3 = new Web3(window.ethereum);
     }
+    if (!contract) {
+        contract = new web3.eth.Contract(contractABI, contractAddress);
+    }
+    return contract;
+}
 
-    // Add event listener to the Connect Wallet button
-    connectWalletButton.addEventListener('click', connectMetaMask);
+/**
+ * Checks if the user is already connected to MetaMask.
+ * Updates the UI if connected.
+ */
+async function checkIfConnected() {
+    try {
+        const accounts = await window.ethereum.request({ method: "eth_accounts" });
+        if (accounts.length > 0) {
+            updateWalletButton(accounts[0]);
+            console.log("Address connected:", accounts[0]);
+            initializeContract();
+        } else {
+            console.log("No address connected");
+        }
+    } catch (error) {
+        console.error("Error checking connection status:", error);
+    }
+}
 
-    // Check initial connection status
-    checkIfConnected();
+/**
+ * Connects to MetaMask and updates the UI.
+ */
+export async function connectMetaMask() {
+    try {
+        if (typeof window.ethereum === "undefined") {
+            alert("MetaMask is not installed. Please install it to use this feature.");
+            return;
+        }
 
-    // Listen for account changes
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        const walletAddress = accounts[0];
+
+        updateWalletButton(walletAddress);
+        initializeContract();
+
+        console.log("Successfully connected to wallet:", walletAddress);
+    } catch (error) {
+        console.error("Error connecting to MetaMask:", error);
+        alert("Failed to connect to MetaMask. Please try again.");
+    }
+}
+
+/**
+ * Updates the Connect Wallet button with the user's address.
+ * @param {string} address - The user's wallet address.
+ */
+function updateWalletButton(address) {
+    const shortenedAddress = `${address.slice(0, 7)}...${address.slice(37, 42)}`;
+    connectWalletButton.textContent = shortenedAddress;
+    connectWalletButton.classList.add("connected-address");
+}
+
+/**
+ * Listens for account changes and updates the UI accordingly.
+ */
+function listenForAccountChanges() {
     if (window.ethereum) {
-        window.ethereum.on('accountsChanged', (accounts) => {
+        window.ethereum.on("accountsChanged", (accounts) => {
             if (accounts.length === 0) {
                 // User disconnected their wallet
-                connectWalletButton.innerHTML = 'Connect Wallet';
-                connectWalletButton.classList.remove('connected-address');
-                console.log('Wallet disconnected');
+                connectWalletButton.textContent = "Connect Wallet";
+                connectWalletButton.classList.remove("connected-address");
+                console.log("Wallet disconnected");
             } else {
                 // Account changed, update the display
-                connectWalletButton.innerHTML = `${accounts[0].slice(0, 7)}...${accounts[0].slice(37, 42)}`;
-                console.log('Account changed to:', accounts[0]);
+                updateWalletButton(accounts[0]);
+                console.log("Account changed to:", accounts[0]);
             }
         });
     }
+}
+
+// Initialize the wallet functionality when the page loads
+document.addEventListener("DOMContentLoaded", async () => {
+    connectWalletButton.addEventListener("click", connectMetaMask);
+    checkIfConnected();
+    listenForAccountChanges();
 });
-
-export function initializeContract() {
-    let web3;
-    let contract;
-
-    // Initialize Web3 instance
-    web3 = new Web3(window.ethereum);
-
-    // Initialize contract
-    contract = new web3.eth.Contract(contractABI, contractAddress);
-
-    return (contract);
-}
-
-// Function to connect to MetaMask
-export async function connectMetaMask() {
-    try {
-        // Check if MetaMask is installed
-        if (typeof window.ethereum === 'undefined') {
-            alert('MetaMask is not installed. Please install it to use this feature.');
-            return;
-        }
-        initializeContract();
-        // Initialize Web3 instance
-        // web3 = new Web3(window.ethereum);
-
-        // Request account access
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        const walletAddress = accounts[0];
-
-        // Initialize contract
-        // contract = new web3.eth.Contract(contractABI, contractAddress);
-
-        // Update button text and style
-        connectWalletButton.innerHTML = `${walletAddress.slice(0, 7)}...${walletAddress.slice(37, 42)}`;
-        connectWalletButton.classList.add('connected-address');
-
-        console.log('Successfully connected to wallet:', walletAddress);
-    } catch (error) {
-        console.error('Error connecting to MetaMask:', error);
-        alert('Failed to connect to MetaMask. Please try again.');
-    }
-}

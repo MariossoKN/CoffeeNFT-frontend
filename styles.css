@@ -343,7 +343,6 @@ main {
     cursor: pointer;
     border-radius: 5px;
     margin-top: 20px;
-    margin-left: 5px;
     transition: all 0.3s ease;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -371,7 +370,6 @@ main {
     cursor: pointer;
     border-radius: 5px;
     margin-top: 20px;
-    margin-left: 5px;
     transition: all 0.3s ease;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -410,11 +408,11 @@ main {
     /* Adjusted padding to match button height */
     font-size: 16px;
     border: 2px solid #fff;
-    border-radius: 3px;
+    /* border-radius: 5px; */
     background-color: transparent;
     color: #fff;
     outline: none;
-    height: 40px;
+    height: 41px;
     /* Set a fixed height */
     box-sizing: border-box;
     /* Ensure padding is included in height */
@@ -457,7 +455,7 @@ main {
 /* Mint Controls Styles */
 .mint-controls {
     display: flex;
-    gap: 10px;
+    gap: 14px;
     /* Space between input and button */
     align-items: center;
     justify-content: center;
@@ -492,7 +490,7 @@ main {
 .welcome-image {
     width: 95%;
     /* Adjust this to your desired image width */
-    height: 92%;
+    height: 95%;
     /* Adjust this to your desired image height */
     object-fit: scale-down;
     /* Ensure the image covers the container */
@@ -526,7 +524,7 @@ main {
 }
 
 .bottom-text {
-    bottom: 2%;
+    bottom: 1%;
     /* Position the bottom text container */
     color: white;
 }
@@ -567,7 +565,7 @@ main {
 .flavor-text {
     max-width: 300px;
     /* Limit the width of the text */
-    font-size: 22px;
+    font-size: 20px;
     color: #fff;
     text-align: center;
     padding: 10px;

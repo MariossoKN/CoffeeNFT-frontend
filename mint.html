@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Mint - Coffee NFT</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +17,9 @@
 <body>
     <header>
         <nav class="navbar">
-            <!-- Hamburger Menu and Connect Wallet Button (Left) -->
             <div class="left-section">
                 <div class="hamburger" id="hamburger">
                     <i class="fas fa-bars"></i>
-                    <!-- Dropdown Menu -->
                     <div class="dropdown-menu" id="dropdownMenu">
                         <a href="coffe.html">Home</a>
                         <a href="mint.html">Mint</a>
@@ -30,20 +28,17 @@
                     </div>
                 </div>
                 <button class="connect-wallet" id="connectWallet">Connect Wallet</button>
-                <!-- Connect Wallet Button -->
             </div>
 
-            <!-- Centered Title -->
             <div class="title">
                 <a href="coffe.html" class="title-link">
                     <h1>Coffee NFT</h1>
                 </a>
             </div>
 
-            <!-- Links (Right) -->
             <div class="nav-links">
-                <a href="mint.html" class="active">Mint</a> <!-- Updated link to mint.html -->
-                <a href="team.html">Team</a> <!-- Updated Twitter link -->
+                <a href="mint.html" class="active">Mint</a>
+                <a href="team.html">Team</a>
                 <a href="about.html">About</a>
             </div>
         </nav>
@@ -78,7 +73,6 @@
             </div>
             <p id="mint-amount"></p>
         </section>
-        <!-- Image Carousel Section -->
         <div class="collection-carousel" id="carousel">
             <img src="./images/carousel/Cappuccino.jpg" alt="Coffee NFT Collection" id="carousel-image"
                 class="carousel-image">
@@ -107,7 +101,6 @@
     <script src="./scripts/wallet.js" type="module" defer></script>
     <script src="./scripts/contract.js" type="module" defer></script>
     <script src="./scripts/mint.js" type="module"></script>
-    <!-- <script src="./scripts/contractFunctions.js" type="module"></script> -->
 </body>
 
 </html>

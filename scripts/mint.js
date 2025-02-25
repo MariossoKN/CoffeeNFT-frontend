@@ -87,7 +87,7 @@ async function updateMintPrice() {
 // Setup mint controls for connected wallet
 async function setupMintControls(account) {
     const maxMintAmount = await getTotalSupply();
-    mintAmountElement.innerHTML = `Total minted: ${await getCurrentSupply()} / ${formatNumberWithSpace(maxMintAmount)}`;
+    mintAmountElement.innerHTML = `Total minted: &nbsp; ${Number(await getCurrentSupply()) / 10 ** 18} / ${formatNumberWithSpace(maxMintAmount)}`;
 
     mintControlsContainer.innerHTML = `
         <input type="number" id="nft-quantity" placeholder="Amount" min="1" max="10">
@@ -165,11 +165,11 @@ async function updateMintSuccessUI(amount, isReserved = false) {
     mintSection.innerHTML = `
         <h2>🎉 Congratulations 🎉</h2>
         <p>You successfully minted ${amount} ${checkIfOneNft(Number(amount))}${isReserved ? ' from reserved supply' : ''}.</p>
-        ${await checkMintAmountLeft()}
+        ${isReserved ? '' : await checkMintAmountLeft(amount)}
         <div class="mint-another-container">
             <a class="mint-another" href="mint.html">Mint Another One</a>
         </div>
-        <p>Total minted: ${await getCurrentSupply()} / ${formatNumberWithSpace(maxMintAmount)}</p>
+        <p>Total minted: &nbsp; ${Number(await getCurrentSupply()) / 10 ** 18} / ${formatNumberWithSpace(maxMintAmount)}</p>
     `;
     document.getElementById('carousel').innerHTML = '';
 }

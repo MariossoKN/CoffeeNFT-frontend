@@ -146,11 +146,11 @@ export async function mintReservedSupply(mintAmount) {
  * Checks how many NFTs the user can still mint.
  * @returns {Promise<string>} A message indicating how many NFTs are left to mint.
  */
-export async function checkMintAmountLeft() {
+export async function checkMintAmountLeft(amount) {
     try {
         const amountMinted = await getMintAmount();
         const maxMintAmount = await getMaxMintAmount();
-        const mintAmountRemaining = Number(maxMintAmount) - Number(amountMinted);
+        const mintAmountRemaining = Number(maxMintAmount) - Number(amountMinted) - Number(amount);
 
         if (mintAmountRemaining === 0) {
             return "";
